@@ -13,16 +13,18 @@ class Person {
     this.username = email.split('@')[0]
   }
 }
+
 class Student extends Person {
   constructor(name, email) {
     super(name, email);
     this.attendance = [];
   }
 
+  
 calculateAttendance(){
   if (this.attendance.length > 0) {
     let counter = 0;
-    for  (let mark of this.attendance){
+    for (let mark of this.attendance){
       counter = counter + mark;
     }
     let attendancePercentage = counter / this.attendance.length * 100;
@@ -32,12 +34,15 @@ calculateAttendance(){
   }
 }
 }
+
 class Teacher extends Person {
   constructor(name, email, honorific){
     super(name, email);
     this.honorific = honorific;
   }
 }
+
+
 class Course {
   constructor(courseCode, courseTitle, courseDescription){
     this.code = courseCode;
@@ -46,6 +51,7 @@ class Course {
     this.teacher = null;
     this.students = [];
   }
+  
 
 addStudent(){
   let name = prompt ('Student Full Name:');
@@ -55,6 +61,7 @@ addStudent(){
   updateRoster(this);
 }
 
+  
 setTeacher(){
   let name = prompt('Full Teacher Name:');
   let email = prompt('Teacher Email:');
@@ -64,6 +71,7 @@ setTeacher(){
   updateRoster(this);
 }
 
+  
 markAttendance(username, status='present'){
   let student = this.findStudent(username);
   if (status === 'present'){
@@ -74,23 +82,6 @@ markAttendance(username, status='present'){
   updateRoster(this);
 }
 
-findStudent(username){
-  let foundStudent = this.students.find(function(student, index){
-    return student.username == username;
-  });
-  return foundStudent;
-  }
-}
-
-
-class Course {
-    constructor(courseCode, courseTitle, courseDescription){
-        this.code = courseCode;
-        this.title = courseTitle;
-        this.description = courseDescription;
-        this.teacher = null;
-        this.students = [];
-    }
 
 
     //////////////////////////////////////////////
@@ -113,7 +104,7 @@ class Course {
 ////////////////////////////////////////////////////////////////////////////////
 let courseCode = prompt('Enter the course Code (example: WATS 3020):', 'TEST 3000');
 let courseTitle = prompt('Course Title:', 'TESTING FOR EVERYONE');
-let courseDescription = prompt('Course Description:', 'A wonderful course with an amazing teacher.');
+let courseDescription = prompt('Course Description:', 'Web Development.');
 let myCourse = new Course(courseCode, courseTitle, courseDescription);
 
 ///////////////////////////////////////////////////
